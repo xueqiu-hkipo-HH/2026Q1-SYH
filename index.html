@@ -358,23 +358,6 @@ window.addEventListener('scroll',()=>{
           <div class="chart-wrap" style="height:200px"><canvas id="c_fin_sign_reg26"></canvas></div>
         </div>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
-        <div style="background:var(--bg2);padding:10px 12px;border-top:3px solid var(--bl)">
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:3px">华北</div>
-          <div style="font-size:13px;font-weight:700;color:var(--rd)">▲ +2.2%</div>
-          <div style="font-size:10px;color:var(--ink3)">763.6 → 780.0万</div>
-        </div>
-        <div style="background:var(--bg2);padding:10px 12px;border-top:3px solid var(--or)">
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:3px">华东</div>
-          <div style="font-size:13px;font-weight:700;color:var(--rd)">▲ +137.1%</div>
-          <div style="font-size:10px;color:var(--ink3)">592.2 → 1,403.0万</div>
-        </div>
-        <div style="background:var(--bg2);padding:10px 12px;border-top:3px solid var(--gd)">
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:3px">华南</div>
-          <div style="font-size:13px;font-weight:700;color:var(--rd)">▲ +58.8%</div>
-          <div style="font-size:10px;color:var(--ink3)">49.5 → 78.6万</div>
-        </div>
-      </div>
     </div>
 
     <!-- 金融签约TOP10 切换对比 -->
@@ -525,29 +508,15 @@ window.addEventListener('scroll',()=>{
     <!-- 上市板块三区签约同比 -->
     <div class="card" style="margin-bottom:14px">
       <div class="c-title bl">上市板块 · 三区签约同比（合同额，万元）</div>
-      <div style="font-size:11px;color:var(--ink3);margin-bottom:12px">25年Q1 总计 1,266.5万 → 26年Q1 总计 1,265.35万，同比 <span style="color:var(--ink2);font-weight:700">−0.1%</span></div>
+      <div style="font-size:11px;color:var(--ink3);margin-bottom:12px">25年Q1 总计 1,266.5万 → 26年Q1 总计 1,202.2万，同比 <span style="color:#276749;font-weight:700">−5.1%</span></div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
         <div>
           <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:8px;text-align:center">25年Q1（总计 1,266.5万）</div>
           <div class="chart-wrap" style="height:200px"><canvas id="c_lst_sign_reg25"></canvas></div>
         </div>
         <div>
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:8px;text-align:center">26年Q1（总计 1,265.35万）</div>
+          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:8px;text-align:center">26年Q1（总计 1,202.2万）</div>
           <div class="chart-wrap" style="height:200px"><canvas id="c_lst_sign_reg26"></canvas></div>
-        </div>
-      </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:12px">
-        <div style="background:var(--bg2);padding:10px 12px;border-top:3px solid var(--or)">
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:3px">华北</div>
-          <div style="font-size:10px;color:var(--ink3)">25→26: <span style="color:var(--rd);font-weight:600">455.9 → 651.4万 <span style="color:var(--rd)">+42.9%</span></span></div>
-        </div>
-        <div style="background:var(--bg2);padding:10px 12px;border-top:3px solid var(--bl)">
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:3px">华东</div>
-          <div style="font-size:10px;color:var(--ink3)">25→26: <span style="color:#276749;font-weight:600">172.0 → 143.6万 <span style="color:#276749">−16.5%</span></span></div>
-        </div>
-        <div style="background:var(--bg2);padding:10px 12px;border-top:3px solid var(--gd)">
-          <div style="font-size:10px;font-weight:700;color:var(--ink2);margin-bottom:3px">华南</div>
-          <div style="font-size:10px;color:var(--ink3)">25→26: <span style="color:#276749;font-weight:600">574.3 → 471.6万 <span style="color:#276749">−17.9%</span></span></div>
         </div>
       </div>
     </div>
@@ -3182,8 +3151,8 @@ function lstExecSwitch(yr){
 
 
 // ── 金融三区签约同比 ────────────────────────────────────────
-const finSignReg25=[763.64,592.2,49.5]; // 华北, 华东, 华南
-const finSignReg26=[780.0,1403.0,78.6];
+const finSignReg25=[780.0,1403.0,78.6]; // 华北, 华东, 华南 (25年)
+const finSignReg26=[763.64,592.2,49.5]; // 26年
 const finSignRegLbls=['华北','华东','华南'];
 const finSignRegColors=[BL,OR,GD];
 new Chart('c_fin_sign_reg25',{type:'bar',
@@ -3204,8 +3173,8 @@ new Chart('c_fin_sign_reg26',{type:'bar',
   scales:{x:{...base.scales.x,ticks:{...tick,autoSkip:false}},y:{...base.scales.y,max:1600,ticks:{...tick,callback:wan}}}}});
 
 // ── 上市三区签约同比 ────────────────────────────────────────
-const lstSignReg25=[455.9,172.0,574.3]; // 华北, 华东, 华南
-const lstSignReg26=[651.35,143.6,471.59];
+const lstSignReg25=[651.35,143.6,471.59]; // 华北, 华东, 华南 (25年)
+const lstSignReg26=[455.9,172.0,574.3]; // 26年
 const lstSignRegLbls2=['华北','华东','华南'];
 new Chart('c_lst_sign_reg25',{type:'bar',
   data:{labels:lstSignRegLbls2,datasets:[{data:lstSignReg25,backgroundColor:[BL,OR,GD],borderRadius:5}]},
